@@ -31,7 +31,7 @@ export default function Login() {
                 </div>
             </div>
 
-            <Link href={'/unlock'} className="inline-block text-center w-full py-2 border border-[#444c4e] rounded-md uppercase tracking-widest text-base text-[#bdccc5] hover:bg-[#bdccc5] hover:text-black transition duration-200 mb-[12px]">
+            <Link href={'/vault'} className="inline-block text-center w-full py-2 border border-[#444c4e] rounded-md uppercase tracking-widest text-base text-[#bdccc5] hover:bg-[#bdccc5] hover:text-black transition duration-200 mb-[12px]">
                 Login
             </Link>
 
