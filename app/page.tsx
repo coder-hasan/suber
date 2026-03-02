@@ -1,5 +1,5 @@
 import Image from "next/image";
-import blackCar from '@/public/Black car.png'
+import blackCar from '@/public/images/cars/lamborghini-huracan-front.png'
 import Link from "next/link";
 export default function Home() {
   return (

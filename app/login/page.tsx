@@ -1,6 +1,6 @@
 import Image from "next/image";
-import backCar from '@/public/3-remove.png'
-import ukFlag from '@/public/united-kingdom-flag-icon.jpg'
+import backCar from '@/public/images/cars/Matte-Black-Ferrari.png'
+import ukFlag from '@/public/images/ui/icon/united-kingdom-flag-icon.jpg'
 import Link from "next/link";
 export default function Login() {
   return (

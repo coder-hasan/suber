@@ -1,4 +1,4 @@
-import yelloCar from '@/public/2-remove.png'
+import yelloCar from '@/public/images/cars/Lamborghini-Aventador-SVJ.png'
 import { faArrowsLeftRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
