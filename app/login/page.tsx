@@ -1,16 +1,20 @@
 import Image from "next/image";
-import backCar from '@/public/images/cars/Matte-Black-Ferrari.png'
+// import backCar from '@/public/images/cars/remove.png'
+import backCar from '@/public/images/cars/Lambo-static.png'
 import ukFlag from '@/public/images/ui/icon/united-kingdom-flag-icon.jpg'
 import Link from "next/link";
 export default function Login() {
   return (
-    <div className="md:w-[480px] h-full md:py-[70px] py-[90px] flex gap-100 flex-col items-center mx-auto bg-center bg-contain" style={{backgroundImage: `url(${backCar.src})` }}>
+    <div className="h-full flex flex-col items-center">
 
-      <h1 className="uppercase text-white text-center text-4xl font-clonoid tracking-[20px]">SUBER</h1>
+      {/* <h1 className="uppercase text-white text-center text-4xl font-clonoid tracking-[20px]">SUBER</h1> */}
 
       {/* <div className="w-full py-20 md:py-15">
         <Image src={blackCar} alt="suber" className="w-full h-auto"/>
       </div> */}
+        <div className="w-[80%] mx-auto pt-15 pb-15 md:py-10">
+            <Image src={backCar} alt="suber" className="w-full h-auto"/>
+        </div>
 
         <form className="w-[75%] mx-auto">
           

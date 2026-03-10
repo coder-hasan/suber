@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 export default function Unlock() {
   return (
-    <div className="md:w-[480px] h-full md:py-[70px] py-[90px] flex gap-80 flex-col items-center mx-auto bg-center bg-contain" style={{backgroundImage: `url(${yelloCar.src})` }}>
+    <div className="h-full flex gap-80 flex-col items-center mx-auto bg-center bg-contain" style={{backgroundImage: `url(${yelloCar.src})` }}>
 
-        <div className="text-center">
+        {/* <div className="text-center">
             <h1 className="uppercase text-white text-center text-4xl font-clonoid tracking-[20px]">SUBER</h1>
             <h3 className="uppercase text-white text-center text-xl font-normal mt-2">The Vault</h3>
-        </div>
+        </div> */}
 
         <div className="w-[75%] mx-auto flex flex-col items-center gap-6">
             <div className="relative w-[70px] h-[70px] border-[2px] border-[#f9f9f8] rounded-full flex items-center justify-center text-[#f9f9f8] 

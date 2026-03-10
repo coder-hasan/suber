@@ -11,3 +11,15 @@ export const clonoid = localFont({
   variable: "--font-clonoid",
   display: "swap",
 });
+
+export const avant = localFont({
+  src: [
+    {
+      path: "../public/fonts/Avant.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-avant",
+  display: "swap",
+});
