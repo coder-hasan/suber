@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 export default function Unlock() {
   return (
-    <div className="h-[calc(100dvh-207px)] md:h-[calc(100vh-287px)] relative w-full flex flex-col justify-between items-center">
+    <div className="h-[calc(100dvh-207px)] md:h-screen relative w-full flex flex-col justify-between items-center">
 
         <div className="text-center relative z-20">
             {/* <h1 className="uppercase text-white text-center text-4xl font-clonoid tracking-[20px]">SUBER</h1> */}
@@ -13,7 +13,7 @@ export default function Unlock() {
         </div>
 
         <div className="absolute top-0 left-0 w-full h-full z-0">
-            <Image src={yelloCar} alt="suber" className="absolute -top-[20px]"/>
+            <Image src={yelloCar} alt="suber" className="absolute -top-[20px] md:-top-[80px]"/>
             {/* <Image src={backCar} alt="suber" className="absolute -top-[120px]"/> */}
         </div>
 

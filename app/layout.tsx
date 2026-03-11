@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${clonoid.variable} ${avant.variable}`}>
       <body
-        className={`${inter.className} antialiased bg-[#020002] md:w-[480px] mx-auto h-dvh md:h-screen`}
+        className={`${inter.className} antialiased bg-[#020002] md:w-[450px] mx-auto h-dvh md:h-screen`}
         
       >
         {/* <main style={{backgroundImage: `url(${layoutBg.src})`}} className="h-full bg-contain bg-no-repeat bg-center"> */}

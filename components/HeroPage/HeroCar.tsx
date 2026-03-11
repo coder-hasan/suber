@@ -22,7 +22,7 @@ export default function HeroCar() {
   return (
     <>
         <div className="absolute top-0 left-0 w-full h-full z-0 fade-in fade-delay-2">
-            <Image src={lightsOn ? blackCarLight : blackCar} alt="suber" className="absolute -top-[20px]"/>
+            <Image src={lightsOn ? blackCarLight : blackCar} alt="suber" className="object-cover absolute -top-[20px] md:-top-[80px]"/>
         </div>
         {/* <div className="flex items-center justify-center">
             <span className="block relative w-[40px] before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[1px]

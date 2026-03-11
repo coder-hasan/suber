@@ -51,7 +51,7 @@ export default function LoginEffect() {
   return (
     <>
         <div className="absolute top-0 left-0 w-full h-full z-0">
-            <Image src={backCar} alt="suber" className="absolute -top-[20px]"/>
+            <Image src={backCar} alt="suber" className="absolute -top-[20px] md:-top-[80px]"/>
             {/* <Image src={backCar} alt="suber" className="absolute -top-[120px]"/> */}
         </div>
 
