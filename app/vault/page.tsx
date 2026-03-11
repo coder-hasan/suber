@@ -1,17 +1,23 @@
 import yelloCar from '@/public/images/cars/Lamborghini-Aventador-SVJ.png'
 import { faArrowsLeftRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import Link from 'next/link';
 export default function Unlock() {
   return (
-    <div className="h-full flex gap-80 flex-col items-center mx-auto bg-center bg-contain" style={{backgroundImage: `url(${yelloCar.src})` }}>
+    <div className="h-[calc(100dvh-207px)] md:h-[calc(100vh-287px)] relative w-full flex flex-col justify-between items-center">
 
-        {/* <div className="text-center">
-            <h1 className="uppercase text-white text-center text-4xl font-clonoid tracking-[20px]">SUBER</h1>
-            <h3 className="uppercase text-white text-center text-xl font-normal mt-2">The Vault</h3>
-        </div> */}
+        <div className="text-center relative z-20">
+            {/* <h1 className="uppercase text-white text-center text-4xl font-clonoid tracking-[20px]">SUBER</h1> */}
+            <h3 className="uppercase font-avant text-white text-center text-base tracking-wider font-normal mt-3">The Vault</h3>
+        </div>
 
-        <div className="w-[75%] mx-auto flex flex-col items-center gap-6">
+        <div className="absolute top-0 left-0 w-full h-full z-0">
+            <Image src={yelloCar} alt="suber" className="absolute -top-[20px]"/>
+            {/* <Image src={backCar} alt="suber" className="absolute -top-[120px]"/> */}
+        </div>
+
+        <div className="w-[75%] mx-auto flex flex-col items-center gap-6 relative z-20">
             <div className="relative w-[70px] h-[70px] border-[2px] border-[#f9f9f8] rounded-full flex items-center justify-center text-[#f9f9f8] 
                 before:content-[''] before:absolute before:right-full before:top-1/2 before:-translate-y-1/2
                 before:w-[60px] before:h-[1.5px]
@@ -25,9 +31,9 @@ export default function Unlock() {
             ">
                 <FontAwesomeIcon className='w-8' icon={faArrowsLeftRight} />
             </div>
-            <h3 className='uppercase text-[#f9f9f8] text-center text-xl tracking-widest'>swipe</h3>
+            <h3 className='uppercase text-[#f9f9f8] text-center text-xl tracking-widest font-inter'>swipe</h3>
             <Link href={'#'} className="
-                relative inline-flex uppercase text-[#fefefe] text-2xl px-14 py-1.5 outline-none border border-[#7a7a7e]
+                relative font-inter inline-flex uppercase text-[#fefefe] text-2xl px-14 py-1.5 outline-none border border-[#7a7a7e]
                 
                 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[1px]
                 before:bg-[linear-gradient(to_right,transparent_0%,#fcfdfe_50%,transparent_100%)]

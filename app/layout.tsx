@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { avant, clonoid } from "@/lib/fonts";
 import { Inter } from "next/font/google";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import layoutBg from "@/public/images/backgrounds/SUPER-MASTER-BACKGROUND.png"
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "SUBER",
@@ -28,11 +27,11 @@ export default function RootLayout({
         className={`${inter.className} antialiased bg-[#020002] md:w-[480px] mx-auto h-dvh md:h-screen`}
         
       >
-        <main style={{backgroundImage: `url(${layoutBg.src})`}} className="h-full bg-contain bg-no-repeat bg-center">
+        {/* <main style={{backgroundImage: `url(${layoutBg.src})`}} className="h-full bg-contain bg-no-repeat bg-center"> */}
           <Header/>
             {children}
           <Footer/>
-        </main>
+        {/* </main> */}
       </body>
     </html>
   );

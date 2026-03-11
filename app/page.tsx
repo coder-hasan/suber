@@ -1,12 +1,8 @@
-// import Image from "next/image";
-// import blackCar from '@/public/images/cars/lamborghini-huracan.png'
-// import blackCar from '@/public/images/cars/SUBER.png'
-// import Link from "next/link";
-import CarHeadlight from "./components/HeroPage/CarHeadlight";
+import HeroCar from "../components/HeroPage/HeroCar";
 export default function Home() {
   return (
-    <div className="flex flex-col items-center">  
-      <CarHeadlight/>
+    <div className="h-[calc(100dvh-207px)] md:h-[calc(100vh-287px)] relative flex flex-col justify-end items-center">
+      <HeroCar/>
     </div>
   );
 }
