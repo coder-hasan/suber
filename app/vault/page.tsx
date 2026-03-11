@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 export default function Unlock() {
   return (
-    <div className="h-[calc(100dvh-207px)] md:h-screen relative w-full flex flex-col justify-between items-center">
+    <div className="h-[calc(100dvh-193.5px)] md:h-screen relative w-full flex flex-col justify-between items-center">
 
         <div className="text-center relative z-20">
             {/* <h1 className="uppercase text-white text-center text-4xl font-clonoid tracking-[20px]">SUBER</h1> */}
