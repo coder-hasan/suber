@@ -52,7 +52,6 @@ export default function LoginEffect() {
     <>
         <div className="absolute top-0 left-0 w-full h-full z-0">
             <Image src={backCar} alt="suber" className="absolute -top-[20px] md:-top-[80px]"/>
-            {/* <Image src={backCar} alt="suber" className="absolute -top-[120px]"/> */}
         </div>
 
         {!loginClicked && <CustomButton clickHandlar={handleEnter} btnText={'Login'}/>}
@@ -61,7 +60,7 @@ export default function LoginEffect() {
           
             <div className="flex gap-4 items-center border border-[#bafcfd] bg-black/10 backdrop-blur-[1px] rounded-md px-5 py-2 mb-[12px]">
                 <span className="text-[#bafcfd]">+44</span>
-                <input type="tel" value={phone} readOnly placeholder="Enter Phone number" className="bg-transparent border-none outline-none w-full text-base text-[#cdd8d0] placeholder-[#909b97]" />
+                <input type="tel" value={phone} readOnly placeholder="Enter Phone number" className="bg-transparent border-none outline-none w-full text-base text-[#cdd8d0] placeholder-[#bafcfd]" />
             </div>
 
             <div className="grid gap-2 grid-cols-3">

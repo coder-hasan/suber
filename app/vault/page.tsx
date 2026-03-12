@@ -5,16 +5,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 export default function Unlock() {
   return (
-    <div className="h-[calc(100dvh-193.5px)] md:h-screen relative w-full flex flex-col justify-between items-center">
+    <div className="h-[calc(100dvh-193.5px)] md:h-screen pb-[20px] relative w-full flex flex-col justify-between items-center">
 
         <div className="text-center relative z-20">
-            {/* <h1 className="uppercase text-white text-center text-4xl font-clonoid tracking-[20px]">SUBER</h1> */}
             <h3 className="uppercase font-avant text-white text-center text-base tracking-wider font-normal mt-3">The Vault</h3>
         </div>
 
         <div className="absolute top-0 left-0 w-full h-full z-0">
             <Image src={yelloCar} alt="suber" className="absolute -top-[20px] md:-top-[80px]"/>
-            {/* <Image src={backCar} alt="suber" className="absolute -top-[120px]"/> */}
         </div>
 
         <div className="w-[75%] mx-auto flex flex-col items-center gap-6 relative z-20">
@@ -31,9 +29,9 @@ export default function Unlock() {
             ">
                 <FontAwesomeIcon className='w-8' icon={faArrowsLeftRight} />
             </div>
-            <h3 className='uppercase text-[#f9f9f8] text-center text-xl tracking-widest font-inter'>swipe</h3>
+            <h3 className='uppercase text-[#f9f9f8] text-center text-lg tracking-widest font-avant'>swipe</h3>
             <Link href={'#'} className="
-                relative font-inter inline-flex uppercase text-[#fefefe] text-2xl px-14 py-1.5 outline-none border border-[#7a7a7e]
+                relative font-avant inline-flex uppercase text-[#fefefe] text-xl px-14 py-1.5 outline-none border border-[#7a7a7e]
                 
                 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[1px]
                 before:bg-[linear-gradient(to_right,transparent_0%,#fcfdfe_50%,transparent_100%)]

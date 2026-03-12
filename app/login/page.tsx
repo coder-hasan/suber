@@ -1,13 +1,8 @@
-'use client'
-
 import LoginEffect from "@/components/Login/LoginEffect";
 
-// import backCar from '@/public/images/cars/Lambo-static.png'
-// import ukFlag from '@/public/images/ui/icon/united-kingdom-flag-icon.jpg'
-export default function Login() {
-    
+export default function Login() {    
   return (
-    <div className="h-[calc(100dvh-193.5px)] md:h-screen relative w-full flex flex-col justify-end items-center">
+    <div className="h-[calc(100dvh-193.5px)] md:h-screen pb-[20px] relative w-full flex flex-col justify-end items-center">
         <LoginEffect/>      
     </div>
   );
