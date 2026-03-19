@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { avant, clonoid } from "@/lib/fonts";
 import { Inter } from "next/font/google";
-import Header from "../components/Header/Header";
+// import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
 export const metadata: Metadata = {
@@ -24,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${clonoid.variable} ${avant.variable}`}>
       <body
-        className={`${inter.className} antialiased bg-[#020002] md:w-[450px] mx-auto h-dvh md:h-screen`}
+        className={`${inter.className} antialiased bg-[#020002] md:w-[450px] mx-auto h-dvh md:min-h-screen`}
         
       >
         {/* <main style={{backgroundImage: `url(${layoutBg.src})`}} className="h-full bg-contain bg-no-repeat bg-center"> */}
-          <Header/>
+          {/* <Header/> */}
             {children}
           <Footer/>
         {/* </main> */}

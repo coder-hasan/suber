@@ -29,13 +29,14 @@ export default function GlowButton({children, variant = "primary", onClick, btnC
         boxShadow: "0 0 20px rgba(186,252,253,0.6)"
        }}
       className={` ${btnClass}
-        relative cursor-pointer w-full mt-3
+        relative cursor-pointer w-full mt-1
         rounded-md text-sm tracking-wide
         backdrop-blur-md transition-all duration-300
+        
 
         ${
           variant === "primary"
-            ? `text-[#bafcfd] border border-[#bafcfd]/60 bg-[#0a0f14]/40 shadow-[0_0_8px_rgba(186,252,253,0.25)] hover:shadow-[0_0_12px_rgba(186,252,253,0.45)]
+            ? `text-[#bafcfd] border border-[#bafcfd]/60 bg-[#0a0f14]/40 bg-[linear-gradient(to_right,transparent_0%,rgba(186,252,253,0.3)_50%,transparent_100%)] shadow-[0_0_8px_rgba(186,252,253,0.25)] hover:shadow-[0_0_12px_rgba(186,252,253,0.45)]
             after:content-[''] after:absolute after:-bottom-[2px] after:left-0 after:w-full after:h-[2px]
                             after:bg-gradient-to-r after:from-transparent after:via-[#bafcfd] after:to-transparent
 
@@ -45,23 +46,21 @@ export default function GlowButton({children, variant = "primary", onClick, btnC
         }
       `}
     >
-        <div className="w-full h-full overflow-hidden relative py-2">
+      <div className="w-full h-full overflow-hidden relative py-2">
             
-      {/* ✨ moving light sweep */}
-      <motion.span
-        className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-[#bafcfd]/40 to-transparent"
-        // animate={{ left: ["-100%", "100%"] }}
-        // transition={{
-        //   repeat: Infinity,
-        //   duration: 2,
-        //   ease: "linear",
-        // }}
-        animate={controls}
-      />
+        <motion.span
+          className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-[#bafcfd]/40 to-transparent"
+          // animate={{ left: ["-100%", "100%"] }}
+          // transition={{
+          //   repeat: Infinity,
+          //   duration: 2,
+          //   ease: "linear",
+          // }}
+          animate={controls}
+        />
 
-      {/* content */}
-      <span className="relative z-10">{children}</span>
-        </div>
+        <span className="relative z-10">{children}</span>
+      </div>
     </motion.button>
   )
 }
