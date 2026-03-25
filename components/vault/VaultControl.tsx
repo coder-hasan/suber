@@ -26,7 +26,7 @@ export default function VaultControl() {
             <Image src={universalBG} alt="suber" className="absolute left-1/2 -translate-x-1/2 -top-[100px] md:-top-[80px]"/>
             {/* <Image src={carDisc} alt="suber" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/> */}
             {/* <Image src={blueCar} alt="suber" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/> */}
-            <AnimatePresence mode="sync">
+            {/* <AnimatePresence mode="sync">
                 <motion.img
                     key={cars[index].src}
                     src={cars[index].src}
@@ -40,7 +40,67 @@ export default function VaultControl() {
                     }}
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 />
+            </AnimatePresence> */}
+            <AnimatePresence mode="sync">
+                <motion.img
+                    key={cars[index].src}
+                    src={cars[index].src}
+                    initial={{
+                    opacity: 0,
+                    scale: 0.98,
+                    // WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 20%)",
+                    }}
+                    animate={{
+                    opacity: 1,
+                    scale: 1,
+                    // WebkitMaskImage: "linear-gradient(to right, black 0%, black 100%)",
+                    }}
+                    exit={{
+                    opacity: 0,
+                    scale: 1.02,
+                    // WebkitMaskImage: "linear-gradient(to right, black 80%, transparent 100%)",
+                    }}
+                    transition={{
+                    duration: 0.6,
+                    ease: [0.65, 0.05, 0.36, 1], // easeInOutCubic
+                    }}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
+                />
             </AnimatePresence>
+            <motion.div
+                key={"mask-" + index}
+                initial={{ x: "-100%" }}
+                animate={{ x: "100%" }}
+                transition={{ duration: 0.6, ease: [0.65, 0.05, 0.36, 1] }}
+                className="absolute top-1/2 left-1/2 
+                        -translate-x-1/2 -translate-y-1/2
+                        w-[600px] h-[300px]
+                        bg-black/40 blur-md pointer-events-none"
+            />
+            {/* <motion.div
+                key={"light-" + index}
+                initial={{ x: "-100%", opacity: 0 }}
+                animate={{ x: "100%", opacity: [0, 1, 0] }}
+                transition={{
+                    duration: 0.6,
+                    ease: "easeInOut",
+                }}
+                className="pointer-events-none absolute top-1/2 left-1/2 
+                            -translate-x-1/2 -translate-y-1/2 
+                            w-[600px] h-[300px] 
+                            bg-gradient-to-r from-transparent via-white/40 to-transparent 
+                            blur-xl"
+            /> */}
+            <motion.div
+                key={"glow-" + index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.4, 0] }}
+                transition={{ duration: 0.6 }}
+                className="absolute top-1/2 left-1/2 
+                            -translate-x-1/2 -translate-y-1/2 
+                            w-[600px] h-[300px] 
+                            bg-cyan-400/20 blur-2xl pointer-events-none"
+            />
         </div>
 
         <div className="text-center relative z-20">
