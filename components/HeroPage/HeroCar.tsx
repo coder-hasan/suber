@@ -1,24 +1,23 @@
 'use client'
 
 import Image from "next/image"
-import blackCar from '@/public/images/cars/SUBER-MASTER-HERO-SCREEN.png'
-import blackCarLight from '@/public/images/cars/SUBER-MASTER-HERO-SCREEN-lighting.png'
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+
 import CustomButton from "../Buttons/CustomButton";
 import Link from "next/link";
 import logo from '@/public/images/logo/SUBER-AVANT-FONT-WHITE-COLOUR.svg'
+import blackCar from '@/public/images/cars/hero-lambo.png'
 
 export default function HeroCar() {
 
-    const [lightsOn, setLightsOn] = useState(false);
+    const [clickToNext, setClickToNext] = useState(false);
     const router = useRouter();
+    const videoRef = useRef<HTMLVideoElement | null>(null);
 
     const handleEnter = () => {
-        setLightsOn(true);
-        setTimeout(() => {
-            router.push("/login");
-        }, 450);
+        setClickToNext(true);
     };
 
   return (
@@ -28,14 +27,49 @@ export default function HeroCar() {
             <Link className="w-1/3 inline-block outline-none fade-in fade-delay-1" href={'/'}>
                 <Image className="w-full h-auto" src={logo} alt="Suber Logo"/>
             </Link>
-            <div className="w-1/3 pr-7 flex items-center justify-end gap-2 bg-black">
-                
-            </div>
+            <div className="w-1/3 pr-7 flex items-center justify-end gap-2"></div>
         </header>
 
         <div className="relative w-full h-[calc(100dvh-110px)] md:min-h-screen flex flex-col pb-[70px] justify-end items-center">
             <div className="absolute top-0 left-0 w-full h-full z-0 fade-in fade-delay-2">
-                <Image src={lightsOn ? blackCarLight : blackCar} alt="suber" className="object-cover absolute -top-[20px] md:-top-[80px]"/>
+                <AnimatePresence>
+                    {!clickToNext && (
+                        <motion.div
+                            key="image"
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            className="absolute w-full -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2"
+                        >
+                            <Image src={blackCar} alt="suber" className={`object-cover w-full`}/>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+                <AnimatePresence>
+                    {clickToNext && (
+                        <motion.video
+                            className="object-cover absolute -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2" 
+                            key="video"
+                            ref={videoRef}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1, ease: "easeInOut" }}
+                            autoPlay
+                            muted
+                            playsInline
+                            preload="none"
+                            onLoadedData={() => {
+                                if (videoRef.current) {
+                                videoRef.current.playbackRate = 1.75;
+                                }
+                            }}
+                            onEnded={() => router.push("/login")}
+                        >
+                            <source src="/video/Lambo-to-ferrari-hero-screen-to-login.mp4" type="video/mp4"/>
+                        </motion.video>
+                    )}
+                </AnimatePresence>
             </div>
             {/* <div className="flex items-center justify-center">
                 <span className="block relative w-[40px] before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[1px]

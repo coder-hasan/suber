@@ -1,82 +1,76 @@
 'use client'
 
 import Image from "next/image"
-// import Link from "next/link"
-
-import universalBG from '@/public/images/backgrounds/SUPER-MASTER-BACKGROUND.png'
-// import { faArrowsLeftRight } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-// import carDisc from '@/public/images/backgrounds/Car-disc-stand-VAULT.png'
-import blueCar from '@/public/images/cars/blue_lambo.png';
-import yellowCar from '@/public/images/cars/yellowLambo.png';
-import NavyBlueCar from '@/public/images/cars/Navy_Blue.png';
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
+import limeCar from '@/public/images/cars/Lime-green-Lamborghini-in-moody-studio.png';
+import blueCar from '@/public/images/cars/blue_lambo.png';
+import yellowCar from '@/public/images/cars/yellowLambo.png';
+import NavyBlueCar from '@/public/images/cars/Navy_Blue.png';
+import universalBG from '@/public/images/backgrounds/SUPER-MASTER-BACKGROUND.png'
+
 export default function VaultControl() {
-    const cars = [ blueCar, yellowCar, NavyBlueCar ];
+    const cars = [ limeCar, blueCar, yellowCar, NavyBlueCar ];
     const [index, setIndex] = useState(0);
-    const next = () => setIndex((i) => (i + 1) % cars.length);
-    const prev = () => setIndex((i) => (i - 1 + cars.length) % cars.length);
+    const [prevIndex, setPrevIndex] = useState(0);
+    const next = () => {
+        setPrevIndex(index);
+        setIndex((i) => (i + 1) % cars.length)
+    };
+    const prev = () => {
+        setPrevIndex(index);
+        setIndex((i) => (i - 1 + cars.length) % cars.length);
+    };
   return (
     <div className='relative w-full h-[calc(100dvh-110px)] md:min-h-screen flex flex-col pb-[70px] justify-between items-center'>
 
         <div className="absolute top-0 left-0 w-full h-full z-0">
-            <Image src={universalBG} alt="suber" className="absolute left-1/2 -translate-x-1/2 -top-[100px] md:-top-[80px]"/>
-            {/* <Image src={carDisc} alt="suber" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/> */}
-            {/* <Image src={blueCar} alt="suber" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"/> */}
-            {/* <AnimatePresence mode="sync">
-                <motion.img
-                    key={cars[index].src}
-                    src={cars[index].src}
-                    initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, scale: 1.02, filter: "blur(4px)" }}
-                    // transition={{ duration: 0.2, ease: "easeInOut" }}
-                    transition={{
-                        duration: 0.5,
-                        ease: [0.25, 0.1, 0.25, 1],
-                    }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                />
-            </AnimatePresence> */}
-            <AnimatePresence mode="sync">
-                <motion.img
-                    key={cars[index].src}
-                    src={cars[index].src}
-                    initial={{
-                    opacity: 0,
-                    scale: 0.98,
-                    // WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 20%)",
-                    }}
-                    animate={{
-                    opacity: 1,
-                    scale: 1,
-                    // WebkitMaskImage: "linear-gradient(to right, black 0%, black 100%)",
-                    }}
-                    exit={{
-                    opacity: 0,
-                    scale: 1.02,
-                    // WebkitMaskImage: "linear-gradient(to right, black 80%, transparent 100%)",
-                    }}
-                    transition={{
-                    duration: 0.6,
-                    ease: [0.65, 0.05, 0.36, 1], // easeInOutCubic
-                    }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
-                />
-            </AnimatePresence>
+            <Image src={limeCar} alt="suber" className="absolute left-1/2 -translate-x-1/2 -top-[20px] md:-top-[80px]"/>
+            
+            {/* <div className="absolute w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <AnimatePresence mode="wait">
+                    <motion.img
+                        key={"old-" + index}
+                        src={cars[prevIndex].src}
+                        initial={{ opacity: 1, scale: 1, }}
+                        animate={{ opacity: 0.4, scale: 1, }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="absolute inset-0 will-change-transform"
+                    />
+                    <motion.img
+                        key={"new-" + index}
+                        src={cars[index].src}
+                        initial={{ opacity: 0.9, scale: 0.995, filter: "blur(6px)", }}
+                        animate={{ opacity: 1, scale: 1, filter: "blur(0px)", }}
+                        exit={{}}
+                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1]}}
+                        className="absolute inset-0 will-change-transform"
+                    />
+                </AnimatePresence>
+            </div>
             <motion.div
-                key={"mask-" + index}
-                initial={{ x: "-100%" }}
-                animate={{ x: "100%" }}
-                transition={{ duration: 0.6, ease: [0.65, 0.05, 0.36, 1] }}
-                className="absolute top-1/2 left-1/2 
-                        -translate-x-1/2 -translate-y-1/2
-                        w-[600px] h-[300px]
-                        bg-black/40 blur-md pointer-events-none"
+                key={"light-" + index}
+                initial={{ x: "-120%", opacity: 0 }}
+                animate={{ x: "120%", opacity: [0, 1, 0] }}
+                transition={{ duration: 0.6, times: [0, 0.5, 1], ease: "easeInOut"}}
+                className="pointer-events-none absolute top-1/2 left-1/2 
+                        -translate-x-1/2 -translate-y-1/2 
+                        w-[650px] h-[320px] 
+                        bg-gradient-to-r from-transparent via-white/50 to-transparent 
+                        blur-xl"
             />
+            <motion.div
+                key={"blur-" + index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.3, 0] }}
+                transition={{ duration: 0.5 }}
+                className="pointer-events-none absolute top-1/2 left-1/2 
+                        -translate-x-1/2 -translate-y-1/2 
+                        w-[650px] h-[320px] 
+                        bg-white/10 blur-2xl"
+            /> */}
             {/* <motion.div
                 key={"light-" + index}
                 initial={{ x: "-100%", opacity: 0 }}
@@ -91,7 +85,7 @@ export default function VaultControl() {
                             bg-gradient-to-r from-transparent via-white/40 to-transparent 
                             blur-xl"
             /> */}
-            <motion.div
+            {/* <motion.div
                 key={"glow-" + index}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: [0, 0.4, 0] }}
@@ -100,7 +94,7 @@ export default function VaultControl() {
                             -translate-x-1/2 -translate-y-1/2 
                             w-[600px] h-[300px] 
                             bg-cyan-400/20 blur-2xl pointer-events-none"
-            />
+            /> */}
         </div>
 
         <div className="text-center relative z-20">

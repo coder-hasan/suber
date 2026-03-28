@@ -1,55 +1,52 @@
 'use client'
 
 import Image from "next/image";
-import { useState } from "react";
-import backCar from '@/public/images/cars/FERRARI-SUBER-LOGIN.png'
+import { useRef, useState } from "react";
 // import backCar2 from '@/public/images/cars/Matte-Black-Ferrari.png'
-import CustomButton from "../Buttons/CustomButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import logo from '@/public/images/logo/SUBER-AVANT-FONT-WHITE-COLOUR.svg'
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
+import CustomButton from "../Buttons/CustomButton";
+import loginCar from '@/public/images/cars/ferrari-login.png'
+import logo from '@/public/images/logo/SUBER-AVANT-FONT-WHITE-COLOUR.svg'
 
 export default function LoginEffect() {
     const router = useRouter();
 
-    const [loginClicked, setLoginClicked] = useState(false);
-    const [phone, setPhone] = useState("");
-    const [sendOTP, setSendOTP] = useState(false)
-    const [verifydOTP, setVerifyOTP] = useState(false)
+    const [clickToNext, setClickToNext] = useState(false);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    // const [phone, setPhone] = useState("");
+    // const [sendOTP, setSendOTP] = useState(false)
+    // const [verifydOTP, setVerifyOTP] = useState(false)
 
     const handleEnter = () => {
-        // setLightsOn(true);
-        // setTimeout(() => {
-            // router.push("/login");
-            setLoginClicked(true)
-        // }, 450);
+        setClickToNext(true)
     };
 
-    const addNumber = (num: string) => {
-        setPhone((prev) => prev + num);
-    };
+    // const addNumber = (num: string) => {
+    //     setPhone((prev) => prev + num);
+    // };
 
-    const deleteNumber = () => {
-        setPhone((prev) => prev.slice(0, -1));
-    };
+    // const deleteNumber = () => {
+    //     setPhone((prev) => prev.slice(0, -1));
+    // };
 
-    const handleUnlock = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();   // stop page reload
-        setSendOTP(true);
-    };
+    // const handleUnlock = (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();   // stop page reload
+    //     setSendOTP(true);
+    // };
 
-    const handleSendOTP = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setVerifyOTP(true)
-    }
+    // const handleSendOTP = (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     setVerifyOTP(true)
+    // }
 
-    const handleVerifyOTP = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        router.push("/vault");
-    }
+    // const handleVerifyOTP = (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+    //     router.push("/vault");
+    // }
   return (
     <>
         <header className={`flex justify-center pt-[70px] relative z-[99999]`}>
@@ -62,12 +59,50 @@ export default function LoginEffect() {
 
         <div className="relative w-full h-[calc(100dvh-110px)] md:min-h-screen flex flex-col pb-[70px] justify-end items-center">
             <div className="absolute top-0 left-0 w-full h-full z-0">
-                <Image src={backCar} alt="suber" className="absolute -top-[20px] md:-top-[80px]"/>
+                {/* <Image src={backCar} alt="suber" className="absolute -top-[20px] md:-top-[80px]"/> */}
+                <AnimatePresence>
+                    {!clickToNext && (
+                        <motion.div
+                            key="image"
+                            initial={{ opacity: 1 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            className="absolute w-full -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2"
+                        >
+                            <Image src={loginCar} alt="suber" className={`object-cover w-full`}/>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+                <AnimatePresence>
+                    {clickToNext && (
+                        <motion.video
+                            className="object-cover absolute -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2" 
+                            key="video"
+                            ref={videoRef}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1, ease: "easeInOut" }}
+                            autoPlay
+                            muted
+                            playsInline
+                            preload="none"
+                            onLoadedData={() => {
+                                if (videoRef.current) {
+                                videoRef.current.playbackRate = 1.75;
+                                }
+                            }}
+                            onEnded={() => router.push("/create-account")}
+                        >
+                            <source src="/video/ferrari-to-rolls-royce-login-to-create.mp4" type="video/mp4"/>
+                        </motion.video>
+                    )}
+                </AnimatePresence>
             </div>
 
-            {!loginClicked && <CustomButton clickHandlar={handleEnter} btnText={'Login'}/>}
+            <CustomButton clickHandlar={handleEnter} btnText={'Login'}/>
 
-            {loginClicked && !sendOTP && <form onSubmit={handleUnlock} className="w-[80%] mx-auto relative z-20">
+            {/* {loginClicked && !sendOTP && <form onSubmit={handleUnlock} className="w-[80%] mx-auto relative z-20">
             
                 <div className="flex gap-4 items-center border border-[#bafcfd] bg-black/10 backdrop-blur-[1px] rounded-md px-5 py-2 mb-[12px]">
                     <span className="text-[#bafcfd]">+44</span>
@@ -94,9 +129,9 @@ export default function LoginEffect() {
                 after:bg-[linear-gradient(to_right,transparent_0%,#bafcfd_50%,transparent_100%)]
                 ">unlock</motion.button>
 
-            </form>}
+            </form>} */}
 
-            {sendOTP && !verifydOTP && <form onSubmit={handleSendOTP} className="w-[80%] mx-auto relative z-20 pb-[200px]">
+            {/* {sendOTP && !verifydOTP && <form onSubmit={handleSendOTP} className="w-[80%] mx-auto relative z-20 pb-[200px]">
             
                 <div className="flex gap-4 items-center border border-[#bafcfd] bg-black/10 backdrop-blur-[1px] rounded-md px-5 py-2 mb-[12px]">
                     <span className="text-[#bafcfd]">+44</span>
@@ -108,9 +143,9 @@ export default function LoginEffect() {
                 after:bg-[linear-gradient(to_right,transparent_0%,#bafcfd_50%,transparent_100%)]
                 ">Send OTP</motion.button>
 
-            </form>}
+            </form>} */}
 
-            {verifydOTP && <form onSubmit={handleVerifyOTP} className="w-[80%] mx-auto relative z-20 pb-[200px]">
+            {/* {verifydOTP && <form onSubmit={handleVerifyOTP} className="w-[80%] mx-auto relative z-20 pb-[200px]">
             
                 <div className="flex gap-4 items-center border border-[#bafcfd] bg-black/10 backdrop-blur-[1px] rounded-md px-5 py-2 mb-[12px]">
                     <input type="tel" readOnly placeholder="Enter OTP" className="bg-transparent text-center border-none outline-none w-full text-base text-[#cdd8d0] placeholder-[#909b97]" />
@@ -121,7 +156,7 @@ export default function LoginEffect() {
                 after:bg-[linear-gradient(to_right,transparent_0%,#bafcfd_50%,transparent_100%)]
                 ">Verify OTP</motion.button>
 
-            </form>}
+            </form>} */}
         </div>
     </>
   )
