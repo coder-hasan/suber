@@ -142,8 +142,8 @@ export default function Register() {
                             key="base"
                             initial={{ opacity: 1, y: 0 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.1, ease: "easeInOut" }}
+                            exit={{ opacity: 0.8, y: -20 }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
                             className="absolute w-full h-full"
                         >
                             <Image src={rollsRoyce} alt="suber" className={`absolute w-full object-contain -top-[20px] md:-top-[80px]`}/>
@@ -154,7 +154,7 @@ export default function Register() {
                             key="top"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: -10 }}
-                            exit={{ opacity: 0 }}
+                            exit={{ opacity: 0.8 }}
                             transition={{ duration: 0.15, ease: "easeInOut" }}
                             className="absolute w-full h-full"
                         >
@@ -168,9 +168,9 @@ export default function Register() {
                             className="object-cover absolute -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2" 
                             key="video"
                             ref={videoRef}
-                            initial={{ opacity: 0 }}
+                            initial={{ opacity: 0.8 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: 1, ease: "easeInOut" }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
                             autoPlay
                             muted
                             playsInline

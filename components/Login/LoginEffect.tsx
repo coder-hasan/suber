@@ -66,8 +66,8 @@ export default function LoginEffect() {
                             key="image"
                             initial={{ opacity: 1 }}
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            exit={{ opacity: 0.8 }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
                             className="absolute w-full -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2"
                         >
                             <Image src={loginCar} alt="suber" className={`object-cover w-full`}/>
@@ -80,9 +80,9 @@ export default function LoginEffect() {
                             className="object-cover absolute -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2" 
                             key="video"
                             ref={videoRef}
-                            initial={{ opacity: 0 }}
+                            initial={{ opacity: 0.8 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: 1, ease: "easeInOut" }}
+                            transition={{ duration: 0.2, ease: "easeInOut" }}
                             autoPlay
                             muted
                             playsInline
