@@ -26,7 +26,7 @@ export default function VaultControl() {
     <div className='relative w-full h-[calc(100dvh-110px)] md:min-h-screen flex flex-col pb-[70px] justify-between items-center'>
 
         <div className="absolute top-0 left-0 w-full h-full z-0">
-            <Image src={limeCar} alt="suber" className="absolute left-1/2 -translate-x-1/2 -top-[20px] md:-top-[80px]"/>
+            <Image src={limeCar} alt="suber" priority className="absolute left-1/2 -translate-x-1/2 -top-[20px] md:-top-[80px]"/>
             
             {/* <div className="absolute w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <AnimatePresence mode="wait">

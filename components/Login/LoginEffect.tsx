@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import backCar2 from '@/public/images/cars/Matte-Black-Ferrari.png'
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -20,6 +20,12 @@ export default function LoginEffect() {
     // const [phone, setPhone] = useState("");
     // const [sendOTP, setSendOTP] = useState(false)
     // const [verifydOTP, setVerifyOTP] = useState(false)
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.load(); // force preload
+        }
+    }, []);
 
     const handleEnter = () => {
         setClickToNext(true)
@@ -51,8 +57,8 @@ export default function LoginEffect() {
     <>
         <header className={`flex justify-center pt-[70px] relative z-[99999]`}>
             <div className="w-1/3"></div>
-            <Link className="w-1/3 inline-block outline-none fade-in fade-delay-1" href={'/'}>
-                <Image className="w-full h-auto" src={logo} alt="Suber Logo"/>
+            <Link className="w-1/3 inline-block outline-none" href={'/'}>
+                <Image className="w-full h-auto" priority src={logo} alt="Suber Logo"/>
             </Link>
             <div className="w-1/3 pr-7 flex items-center justify-end gap-2 bg-black"></div>
         </header>
@@ -70,7 +76,7 @@ export default function LoginEffect() {
                             transition={{ duration: 0.2, ease: "easeInOut" }}
                             className="absolute w-full -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2"
                         >
-                            <Image src={loginCar} alt="suber" className={`object-cover w-full`}/>
+                            <Image src={loginCar} alt="suber" priority className={`object-cover w-full`}/>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -89,7 +95,7 @@ export default function LoginEffect() {
                             preload="none"
                             onLoadedData={() => {
                                 if (videoRef.current) {
-                                videoRef.current.playbackRate = 1.75;
+                                    videoRef.current.playbackRate = 1.5;
                                 }
                             }}
                             onEnded={() => router.push("/create-account")}
@@ -98,9 +104,16 @@ export default function LoginEffect() {
                         </motion.video>
                     )}
                 </AnimatePresence>
+                <video
+                    ref={videoRef}
+                    preload="auto"
+                    className="hidden"
+                >
+                    <source src="/video/ferrari-to-rolls-royce-login-to-create.mp4" type="video/mp4" />
+                </video>
             </div>
 
-            <CustomButton clickHandlar={handleEnter} btnText={'Login'}/>
+            <CustomButton clickHandlar={handleEnter} styleClass="pulse" btnText={'Login'}/>
 
             {/* {loginClicked && !sendOTP && <form onSubmit={handleUnlock} className="w-[80%] mx-auto relative z-20">
             

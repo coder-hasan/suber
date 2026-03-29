@@ -10,8 +10,8 @@ export default function Unlock() {
 
         <header className={`flex justify-center pt-[70px] relative z-[99999]`}>
             <div className="w-1/3"></div>
-            <Link className="w-1/3 inline-block outline-none fade-in fade-delay-1" href={'/'}>
-                <Image className="w-full h-auto" src={logo} alt="Suber Logo"/>
+            <Link className="w-1/3 inline-block outline-none" href={'/'}>
+                <Image className="w-full h-auto" priority src={logo} alt="Suber Logo"/>
             </Link>
             <div className="w-1/3 pr-7 flex items-center justify-end gap-2"></div>
         </header>

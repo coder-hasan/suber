@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,6 +15,12 @@ export default function HeroCar() {
     const [clickToNext, setClickToNext] = useState(false);
     const router = useRouter();
     const videoRef = useRef<HTMLVideoElement | null>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.load(); // force preload
+        }
+    }, []);
 
     const handleEnter = () => {
         setClickToNext(true);
@@ -42,7 +48,7 @@ export default function HeroCar() {
                             transition={{ duration: 0.2, ease: "easeInOut" }}
                             className="absolute w-full -top-[20px] md:-top-[80px] left-1/2 -translate-x-1/2"
                         >
-                            <Image src={blackCar} alt="suber" className={`object-cover w-full`}/>
+                            <Image src={blackCar} priority alt="suber" className={`object-cover w-full`}/>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -61,7 +67,7 @@ export default function HeroCar() {
                             preload="none"
                             onLoadedData={() => {
                                 if (videoRef.current) {
-                                    videoRef.current.playbackRate = 1.75;
+                                    videoRef.current.playbackRate = 1.5;
                                 }
                             }}
                             onEnded={() => router.push("/login")}
@@ -70,6 +76,13 @@ export default function HeroCar() {
                         </motion.video>
                     )}
                 </AnimatePresence>
+                <video
+                    ref={videoRef}
+                    preload="auto"
+                    className="hidden"
+                >
+                    <source src="/video/Lambo-to-ferrari-hero-screen-to-login.mp4" type="video/mp4" />
+                </video>
             </div>
             {/* <div className="flex items-center justify-center">
                 <span className="block relative w-[40px] before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[1px]
@@ -86,7 +99,7 @@ export default function HeroCar() {
                 <span className="block relative w-[40px] after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px]
                 after:bg-[linear-gradient(to_right,transparent_0%,#fcfdfe_50%,transparent_100%)]"></span>
             </div> */}
-            <CustomButton btnText={'Enter'} clickHandlar={handleEnter}/>
+            <CustomButton btnText={'Enter'} styleClass="enter-pulse" clickHandlar={handleEnter}/>
         </div>
     </>
   )

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import rollsRoyce from '@/public/images/cars/Rolls-royce create.png'
 import rollsRoyceTop from '@/public/images/cars/Rolls-Royce.png'
 import logo from '@/public/images/logo/SUBER-AVANT-FONT-WHITE-COLOUR.svg'
@@ -32,6 +32,12 @@ export default function Register() {
     const length = 4;
     const [otp, setOtp] = useState(Array(length).fill(""));
     const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.load(); // force preload
+        }
+    }, []);
 
     // const [form, setForm] = useState({
     //     firstName: "",
@@ -113,8 +119,8 @@ export default function Register() {
     <>
         <header className={`flex justify-center pt-[70px] relative z-[99999] ${(step > 3 && step < 8) ? 'opacity-0' : 'opacity-100'}`}>
             <div className="w-1/3"></div>
-            <Link className="w-1/3 inline-block outline-none fade-in fade-delay-1" href={'/'}>
-                <Image className="w-full h-auto" src={logo} alt="Suber Logo"/>
+            <Link className="w-1/3 inline-block outline-none" href={'/'}>
+                <Image className="w-full h-auto" priority src={logo} alt="Suber Logo"/>
             </Link>
             <div className="w-1/3 pr-7 flex items-center justify-end gap-2 bg-black">
                 {(step >= 1 && step < 6) && <><LeftButton onClick={back}/>
@@ -146,7 +152,7 @@ export default function Register() {
                             transition={{ duration: 0.2, ease: "easeInOut" }}
                             className="absolute w-full h-full"
                         >
-                            <Image src={rollsRoyce} alt="suber" className={`absolute w-full object-contain -top-[20px] md:-top-[80px]`}/>
+                            <Image src={rollsRoyce} alt="suber" priority className={`absolute w-full object-contain -top-[20px] md:-top-[80px]`}/>
                         </motion.div>
                     )}
                     {step > 0 && (
@@ -158,7 +164,7 @@ export default function Register() {
                             transition={{ duration: 0.15, ease: "easeInOut" }}
                             className="absolute w-full h-full"
                         >
-                            <Image src={rollsRoyceTop} alt="suber" className={`absolute w-full object-contain -top-[10px]`}/>
+                            <Image src={rollsRoyceTop} alt="suber" priority className={`absolute w-full object-contain -top-[10px]`}/>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -177,7 +183,7 @@ export default function Register() {
                             preload="none"
                             onLoadedData={() => {
                                 if (videoRef.current) {
-                                videoRef.current.playbackRate = 1.75;
+                                    videoRef.current.playbackRate = 1.5;
                                 }
                             }}
                             onEnded={() => router.push("/vault")}
@@ -186,6 +192,13 @@ export default function Register() {
                         </motion.video>
                     )}
                 </AnimatePresence>
+                <video
+                    ref={videoRef}
+                    preload="auto"
+                    className="hidden"
+                >
+                    <source src="/video/Rolls-royce-to-green-lambo-create-to-vault.mp4" type="video/mp4" />
+                </video>
             </div>
 
             {step < 8 && (
@@ -199,7 +212,7 @@ export default function Register() {
                                 animate="animate"
                                 exit="exit"
                                 onClick={next}
-                                className="enter-pulse uppercase cursor-pointer font-avant text-white tracking-wider text-base font-semibold outline-none"
+                                className="pulse uppercase cursor-pointer font-avant text-white tracking-wider text-base font-semibold outline-none"
                             >
                                 Create Account
                             </motion.button>

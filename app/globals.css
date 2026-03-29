@@ -134,6 +134,11 @@ body {
   animation: headlightsGlow 0.7s ease forwards;
 }
 
+.pulse {
+  animation:
+    suberPulse 3s ease-in-out infinite 2s;
+}
+
 .enter-pulse {
   opacity: 0;
   animation:
